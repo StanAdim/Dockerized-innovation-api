@@ -13,8 +13,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::get('/test', function(){
     return 'Test Api';
 });
-Route::post('/create-applicant-profile', [PersonalProfileController::class, 'store']);
 Route::get('/applicant-profiles', [PersonalProfileController::class, 'index']);
+Route::get('/application-before-submission/{slug}', [PersonalProfileController::class, 'show']);
+Route::post('/create-applicant-profile', [PersonalProfileController::class, 'store']);
 
 Route::post('/create-business-profile/{slug}', [BusinessProfileController::class, 'store']);
 

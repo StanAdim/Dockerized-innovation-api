@@ -55,9 +55,13 @@ class PersonalProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+        $appplication = ApplicationResource::collection(PersonalProfile::where('id',$slug)->get())[0];
+        return response()->json([
+            'message'=> 'Application Details',
+            'data' => $appplication
+        ]);
     }
 
     /**
