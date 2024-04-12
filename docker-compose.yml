@@ -1,0 +1,25 @@
+services:
+  innovation-api:
+    container_name: innovation-api
+    build: .
+    volumes:
+      - ./backend-api:/var/www/html
+    ports:
+      - 9050:80
+  
+  innovation_mysql_db:
+    container_name: innovation-ictc
+    image: mysql:8.0.33
+    environment:
+      MYSQL_ROOT_PASSWORD: BeyondOrder24
+      MYSQL_DATABASE: innovation_ictc
+    ports:
+    - 9051:3306
+  
+  innovation_phpmyadmin:
+    container_name: innovation-phpmyadmin
+    image: phpmyadmin:5.2.1
+    ports:
+      - 9052:80
+    environment:
+      - PMA_ARBITRARY=1
